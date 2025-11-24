@@ -1,13 +1,12 @@
-import { add, capitalize, formatNumber, groupBy, type User } from './index';
+import { add, capitalize, formatNumber, Logger, type LogLevel } from './index';
+import { config } from './config';
 
 console.log('sum(typed):', add(2, 3));
 console.log('capitalize(typed):', capitalize('hello'));
-console.log('format(ok):', formatNumber(123.456, { precision: 2 }));
 
-const users: User[] = [
-  { id: 1, name: 'Alice' },
-  { id: 2, name: 'Bob' },
-];
+console.log('format(ok):', formatNumber(123.456)); // precision з APP_PRECISION
 
-// ПОМИЛКА ТИПІВ: ключа "age" у User не існує
-console.log('group ok:', groupBy(users, 'name'));
+const logger = new Logger(config.LOG_LEVEL as LogLevel);
+
+logger.info('Application started');
+logger.debug('Extra debug info');
