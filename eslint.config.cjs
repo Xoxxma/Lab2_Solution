@@ -3,8 +3,14 @@ const tseslint = require('typescript-eslint');
 const prettier = require('eslint-config-prettier');
 
 module.exports = [
-  // какие файлы вообще не трогаем
-  { ignores: ['**/*.cjs'] },
+  // какие файлы ESLint вообще не трогает
+  {
+    ignores: [
+      '**/*.cjs', // конфиги
+      'dist/**', // собранные файлы (JS, d.ts)
+      'node_modules/**',
+    ],
+  },
 
   // базовые правила для обычного JS
   js.configs.recommended,
@@ -12,12 +18,12 @@ module.exports = [
   // базовые правила для TypeScript
   ...tseslint.configs.recommended,
 
-  // отключаем конфликты с Prettier
+  // убираем конфликты с Prettier
   prettier,
 
-  // наши настройки именно для .ts файлов
+  // наши настройки именно для исходников TS
   {
-    files: ['**/*.ts'],
+    files: ['src/**/*.ts'],
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
@@ -29,10 +35,13 @@ module.exports = [
       '@typescript-eslint': tseslint.plugin,
     },
     rules: {
-      // пока только предупреждение за any (потом сделаем error)
-      '@typescript-eslint/no-explicit-any': 'warn',
-      // предупреждение за неиспользуемые переменные
-      'no-unused-vars': 'warn',
+      // как договаривались: any запрещён (или поставь 'warn', если хочешь мягче)
+      '@typescript-eslint/no-explicit-any': 'error',
+
+      // базовый eslint-овский no-unused-vars отключаем...
+      'no-unused-vars': 'off',
+      // ...а вместо него используем typescript-версию
+      '@typescript-eslint/no-unused-vars': 'warn',
     },
   },
 ];

@@ -2,7 +2,16 @@
   "name": "lab2_solution",
   "version": "1.5.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "lint": "eslint . --ext .ts",
