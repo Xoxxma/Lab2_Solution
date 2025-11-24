@@ -228,19 +228,3 @@
 
 Для зручності всі скріни  в окремій папці:
 /screenshots/
-
-Приклади назв файлів (рекомендація, не обов’язково):
-
-- `01-github-repo.png` – створення порожнього репозиторію на GitHub.
-- `02-npm-init.png` – результат `npm init` і `package.json` зі стартовою версією.
-- `03-install-deps.png` – встановлення залежностей (`npm i`, `npm i -D ...`).
-- `04-eslint-prettier-config.png` – конфіги `eslint.config.cjs`, `.prettierrc.cjs`.
-- `05-husky-commitlint.png` – структура `.husky`, конфіг `commitlint.config.cjs`.
-- `06-first-lint-error.png` – приклад падіння `npm run lint` / `npm run format:check`.
-- `07-first-lint-fixed.png` – виправлений код, успішний lint.
-- `08-type-errors.png` – приклад помилок типізації (`npm run typecheck`).
-- `09-type-fixed.png` – успішний `typecheck` після виправлення.
-- `10-env-config-logger.png` – `config.ts`, `Logger`, файл `.env`.
-- `11-build-and-exports.png` – успішний `npm run build` і налаштований `package.json` (main/module/types/exports).
-- `12-npm-version-tags.png` – результат `npm version ...`, `git log --oneline`, `git tag`.
-
